@@ -1,7 +1,10 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
@@ -34,7 +37,9 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/account-e2e/**/*"]
+      "exclude": [
+        "apps/account-e2e/**/*"
+      ]
     }
   ],
   "nxCloudAccessToken": "NzMyNmM0MjQtMDc0Zi00MjM0LTg5ZTgtYjRhZTA1ZTM3MjdhfHJlYWQtd3JpdGU="
