@@ -1,16 +1,14 @@
 import { UserRepository } from './../user/repositories/user.repository';
 import { Injectable } from '@nestjs/common';
-import { RegisterDto } from './auth.controller';
 import { UserEntity } from '../user/entities/user.entity';
 import { UserRole } from '@purple/interfaces';
 import { JwtService } from '@nestjs/jwt';
-import { access } from 'fs';
 
 @Injectable()
 export class AuthService {
   constructor(private readonly userRepository: UserRepository, private readonly jwtService: JwtService) {}
 
-  async register({ email, password, displayName }: RegisterDto) {
+  async register({ email, password, displayName }) {
     const oldUser = await this.userRepository.findUser(email);
 
     if (oldUser) {
