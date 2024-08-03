@@ -4,7 +4,7 @@ import { RMQService } from 'nestjs-rmq';
 import { LoginDto } from '../dtos/login.dto';
 import { RegisterDto } from '../dtos/register.dto';
 
-@Controller()
+@Controller("auth")
 export class AuthController {
   constructor(private readonly rmqService: RMQService) {}
 
