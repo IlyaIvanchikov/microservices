@@ -11,7 +11,7 @@ import { AppModule } from './app/app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.init();
-  Logger.log(`🚀 Application is running`);
+  Logger.log(`🚀 Account is running`);
 }
 
 bootstrap();

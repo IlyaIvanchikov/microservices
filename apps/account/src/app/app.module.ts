@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { getMongoConfig } from './configs/mongo.config';
 import { RMQModule } from 'nestjs-rmq';
 import { getRMQConfig } from './configs/rmq.config';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { getRMQConfig } from './configs/rmq.config';
     UserModule,
     AuthModule,
     MongooseModule.forRootAsync(getMongoConfig()),
+    ScheduleModule.forRoot(),
   ],
 })
 export class AppModule {}

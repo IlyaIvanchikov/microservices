@@ -1,12 +1,20 @@
-import { Controller, Post, UseGuards } from '@nestjs/common';
+import { Controller, Logger, Post, UseGuards } from '@nestjs/common';
+import { Cron } from '@nestjs/schedule';
 import { JWTAuthGuard } from '../guards/jwt.guard';
 import { UserId } from '../guards/user.decorator';
 
 @Controller('user')
 export class UserController {
-  constructor() {}
+	constructor() {}
 
-  @UseGuards(JWTAuthGuard)
-  @Post('info')
-  async info(@UserId() userId: string) {}
+	@UseGuards(JWTAuthGuard)
+	@Post('info')
+	async info(@UserId() userId: string) {}
+
+	@Cron('*/5 * * * * *', {
+    name: 'cron',
+  })
+	async cron() {
+		Logger.log('Done')
+	}
 }

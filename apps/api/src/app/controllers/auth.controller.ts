@@ -4,21 +4,17 @@ import { RMQService } from 'nestjs-rmq';
 import { LoginDto } from '../dtos/login.dto';
 import { RegisterDto } from '../dtos/register.dto';
 
-@Controller("auth")
+@Controller('auth')
 export class AuthController {
   constructor(private readonly rmqService: RMQService) {}
 
   @Post('register')
-  async register(@Body() { displayName, email, password }: RegisterDto) {
+  async register(@Body() dto: RegisterDto) {
     try {
       return await this.rmqService.send<
         AccountRegister.Request,
         AccountRegister.Response
-      >(AccountRegister.topic, {
-        displayName,
-        email,
-        password,
-      });
+      >(AccountRegister.topic, dto, { headers: { requestId: 'adad' } });
     } catch (e) {
       if (e instanceof Error) {
         throw new UnauthorizedException(e.message);

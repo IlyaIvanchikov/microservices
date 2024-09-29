@@ -22,4 +22,16 @@ export class UserRepository {
   async deleteUser(email: string) {
     return this.userModel.deleteOne({ email }).exec();
   }
+
+  async findUserById(id: string): Promise<User> {
+    return this.userModel.findById(id).exec();
+  }
+
+  async updateUser(user: UserEntity): Promise<User> {
+    return this.userModel.findByIdAndUpdate(user._id, user).exec();
+  }
+
+  async healthCheck() {
+    return this.userModel.findOne({}).exec();
+  }
 }
